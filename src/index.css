@@ -1,0 +1,134 @@
+/*Variáveis de cor e fonte*/
+:root {
+  --bg-dark: #1a1a24;
+  --bg-panel: #222230;
+  --bg-board: #1c1f2b;
+  --accent-green: #4dff2a;
+  --accent-green-dim: #2c9c12;
+  --accent-yellow: #ffd700;
+  --accent-red: #ff3333;
+  --accent-blue: #00d4ff;
+  --text-primary: #f5f5f5;
+  --text-muted: #a0a0b8;
+  --border-color: #32324a;
+  --snake-head: #39ff14;
+  --snake-body: #228b12;
+  --food-color: #ffd700;
+  --grid-line: #232336;
+  --font-pixel: "Press Start 2P", monospace;
+  --font-ui: "Inter", sans-serif;
+  --glow-green: 0 0 10px #39ff14, 0 0 20px #39ff1440;
+  --glow-yellow: 0 0 10px #ffd700, 0 0 20px #ffd70040;
+}
+
+/*Reset padrão*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*Ocupar a tela toda*/
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  overflow: hidden; /*Impedindo o scroll da página*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Efeito scanline overlay tipo monitor tubo antigo*/
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-pixel);
+  border: none;
+  outline: none;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  60% {
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    transform: translate(1px, -1px);
+  }
+}
+
+@keyframes eat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
